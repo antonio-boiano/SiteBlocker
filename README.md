@@ -7,7 +7,6 @@
   
   A powerful Chrome extension to block distractions, boost productivity, and achieve your goals through intelligent website blocking with advanced features.
   
-  ![Features Overview](https://github.com/user-attachments/assets/44b98fe5-d814-4178-8ea7-f41d89f125e7)
 </div>
 
 ## ✨ Features
