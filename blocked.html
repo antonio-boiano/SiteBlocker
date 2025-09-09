@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Site Blocked</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+        .container {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            max-width: 500px;
+            width: 90%;
+        }
+        h1 {
+            margin: 0 0 20px 0;
+            font-size: 2.5em;
+        }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        .blocked-url {
+            background: rgba(255,255,255,0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            word-break: break-all;
+            font-family: monospace;
+        }
+        .info {
+            font-size: 0.9em;
+            opacity: 0.8;
+            margin-top: 20px;
+        }
+        
+        @keyframes loading {
+            0% { width: 0%; }
+            50% { width: 100%; }
+            100% { width: 0%; }
+        }
+        
+        .answer-option {
+            display: block;
+            width: 100%;
+            padding: 15px 20px;
+            margin: 10px 0;
+            background: rgba(255,255,255,0.15);
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            color: white;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+        
+        .answer-option:hover {
+            background: rgba(255,255,255,0.25);
+            border-color: rgba(255,255,255,0.5);
+            transform: translateY(-2px);
+        }
+        
+        .answer-option.selected {
+            background: rgba(33, 150, 243, 0.3);
+            border-color: #2196F3;
+        }
+        
+        .answer-option.correct {
+            background: rgba(76, 175, 80, 0.3);
+            border-color: #4CAF50;
+        }
+        
+        .answer-option.incorrect {
+            background: rgba(244, 67, 54, 0.3);
+            border-color: #f44336;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚫 Site Blocked</h1>
+        <p>This website has been blocked according to your Site Blocker settings.</p>
+        
+        <div class="blocked-url" id="blockedUrl">
+            Loading...
+        </div>
+        
+        <p>The site is blocked due to your current blocking policy and schedule settings.</p>
+        
+        <div id="challengeSection" style="display: none;">
+            <h3>🧠 Trivia Challenge</h3>
+            <p id="challengeDescription">Answer these trivia questions to access the site temporarily:</p>
+            <div id="loadingIndicator" style="text-align: center; margin: 20px 0;">
+                <div style="font-size: 1.2em; margin-bottom: 10px;">Loading questions...</div>
+                <div style="width: 100%; background: rgba(255,255,255,0.2); border-radius: 10px; height: 8px;">
+                    <div style="width: 0%; background: #4CAF50; height: 100%; border-radius: 10px; animation: loading 2s linear infinite;" id="loadingBar"></div>
+                </div>
+            </div>
+            <div id="questionContainer" style="display: none;">
+                <div id="questionProgress" style="text-align: center; margin-bottom: 20px; font-size: 0.9em; opacity: 0.8;"></div>
+                <div id="questionText" style="font-size: 1.2em; margin: 20px 0; padding: 20px; background: rgba(255,255,255,0.2); border-radius: 10px; line-height: 1.4;"></div>
+                <div id="answerOptions" style="margin: 20px 0;">
+                    <!-- Multiple choice options will be populated here -->
+                </div>
+                <button id="nextQuestion" style="padding: 10px 20px; font-size: 1.1em; background: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; margin: 10px; display: none;">Next Question</button>
+                <div id="challengeResult" style="margin-top: 15px; font-weight: bold; text-align: center;"></div>
+            </div>
+        </div>
+        
+        <button id="showChallenge" style="padding: 10px 20px; font-size: 1.1em; background: #2196F3; color: white; border: none; border-radius: 5px; cursor: pointer; margin: 20px 0;">Access Site Temporarily</button>
+        
+        <div class="info">
+            To modify your blocking settings, access the extension options through your browser's extension menu or right-click the extension icon and select "Options".
+        </div>
+    </div>
+
+    <script src="blocked.js"></script>
+</body>
+</html>

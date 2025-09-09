@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            width: 300px;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+        }
+        h2 {
+            margin: 0 0 15px 0;
+            color: #333;
+            text-align: center;
+        }
+        .current-site {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .site-url {
+            font-family: monospace;
+            background: white;
+            padding: 8px;
+            border-radius: 4px;
+            margin: 5px 0;
+            word-break: break-all;
+        }
+        .status {
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .blocked {
+            background: #ffebee;
+            color: #c62828;
+        }
+        .allowed {
+            background: #e8f5e8;
+            color: #2e7d32;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            margin: 5px 0;
+            transition: background-color 0.3s;
+        }
+        .primary-btn {
+            background: #4CAF50;
+            color: white;
+        }
+        .primary-btn:hover {
+            background: #45a049;
+        }
+        .secondary-btn {
+            background: #f44336;
+            color: white;
+        }
+        .secondary-btn:hover {
+            background: #da190b;
+        }
+        .settings-btn {
+            background: #2196F3;
+            color: white;
+        }
+        .settings-btn:hover {
+            background: #1976D2;
+        }
+        .quick-stats {
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h2>🚫 Site Blocker</h2>
+    
+    <div class="current-site">
+        <div>Current Site:</div>
+        <div class="site-url" id="currentUrl">Loading...</div>
+        <div class="status" id="blockStatus">Checking...</div>
+    </div>
+    
+    <button id="toggleSite" class="primary-btn">Add to Blocked List</button>
+    <button id="openSettings" class="settings-btn">Open Settings</button>
+    
+    <div class="quick-stats">
+        <div>Blocked Sites: <span id="blockedCount">0</span></div>
+        <div>Block Policy: <span id="currentPolicy">Strict</span></div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
