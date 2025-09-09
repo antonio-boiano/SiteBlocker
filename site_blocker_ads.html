@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Blocker - Advertising Figures</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+        }
+        
+        .ad-container {
+            width: 1280px;
+            height: 800px;
+            margin: 20px auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Ad 1 - Focus & Productivity */
+        .ad1 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .ad1 .content {
+            max-width: 800px;
+            padding: 60px;
+        }
+        
+        .ad1 h1 {
+            font-size: 72px;
+            font-weight: 800;
+            margin: 0 0 30px 0;
+            line-height: 1.1;
+        }
+        
+        .ad1 .subtitle {
+            font-size: 28px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .ad1 .features {
+            display: flex;
+            justify-content: space-around;
+            margin: 60px 0;
+        }
+        
+        .ad1 .feature {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .ad1 .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .ad1 .feature-text {
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        /* Ad 2 - Smart Blocking */
+        .ad2 {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ffd93d 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+        
+        .ad2 .left {
+            flex: 1;
+            padding: 80px;
+        }
+        
+        .ad2 .right {
+            flex: 1;
+            background: rgba(255,255,255,0.1);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        .ad2 h1 {
+            font-size: 64px;
+            font-weight: 800;
+            margin: 0 0 30px 0;
+            line-height: 1.1;
+        }
+        
+        .ad2 .subtitle {
+            font-size: 24px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .ad2 .mock-interface {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            color: #333;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            max-width: 400px;
+        }
+        
+        .blocked-site {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .site-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .youtube { background: #ff0000; }
+        .facebook { background: #1877f2; }
+        .twitter { background: #1da1f2; }
+        
+        /* Ad 3 - Schedule Control */
+        .ad3 {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .ad3 h1 {
+            font-size: 68px;
+            font-weight: 800;
+            margin: 0 0 30px 0;
+        }
+        
+        .ad3 .subtitle {
+            font-size: 26px;
+            margin-bottom: 50px;
+            opacity: 0.9;
+        }
+        
+        .schedule-visual {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            margin: 40px 0;
+        }
+        
+        .days-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .day-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .day-circle.active {
+            background: #4CAF50;
+            box-shadow: 0 0 20px rgba(76, 175, 80, 0.5);
+        }
+        
+        .time-display {
+            font-size: 32px;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+        
+        /* Ad 4 - In-App Blocking */
+        .ad4 {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            color: #333;
+            display: flex;
+            align-items: center;
+        }
+        
+        .ad4 .left {
+            flex: 1;
+            padding: 80px;
+        }
+        
+        .ad4 .right {
+            flex: 1;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .ad4 h1 {
+            font-size: 64px;
+            font-weight: 800;
+            margin: 0 0 30px 0;
+            color: #2d3748;
+        }
+        
+        .ad4 .subtitle {
+            font-size: 24px;
+            margin-bottom: 40px;
+            color: #4a5568;
+        }
+        
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 400px;
+        }
+        
+        .app-card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        
+        .app-card:hover {
+            transform: scale(1);
+        }
+        
+        .app-card .app-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .app-card.youtube .app-icon { background: #ff0000; }
+        .app-card.tiktok .app-icon { background: linear-gradient(45deg, #ff0050, #00f2ea); }
+        .app-card.instagram .app-icon { background: linear-gradient(45deg, #833ab4, #fd1d1d); }
+        .app-card.facebook .app-icon { background: #1877f2; }
+        .app-card.twitter .app-icon { background: #000; }
+        .app-card.snapchat .app-icon { background: #FFFC00; color: #000; }
+        
+        .app-name {
+            font-weight: 600;
+            font-size: 14px;
+            color: #2d3748;
+        }
+        
+        /* Ad 5 - Challenge Mode */
+        .ad5 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .ad5 h1 {
+            font-size: 64px;
+            font-weight: 800;
+            margin: 0 0 30px 0;
+        }
+        
+        .ad5 .subtitle {
+            font-size: 26px;
+            margin-bottom: 50px;
+            opacity: 0.9;
+        }
+        
+        .challenge-demo {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 50px;
+            backdrop-filter: blur(10px);
+            max-width: 600px;
+        }
+        
+        .quiz-question {
+            background: white;
+            color: #333;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .question-text {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .answer-options {
+            display: grid;
+            gap: 10px;
+        }
+        
+        .answer-option {
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .answer-option:hover {
+            border-color: #667eea;
+            background: #edf2f7;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 20px 40px;
+            font-size: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(76, 175, 80, 0.3);
+            transition: transform 0.3s ease;
+            margin-top: 30px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(76, 175, 80, 0.4);
+        }
+        
+        .logo {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 15px 25px;
+            backdrop-filter: blur(10px);
+            font-weight: 600;
+            font-size: 18px;
+        }
+        
+        .shield-icon {
+            color: #ff4757;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Ad 1: Focus & Productivity -->
+    <div class="ad-container ad1">
+        <div class="content">
+            <h1>FOCUS<br>LIKE NEVER BEFORE</h1>
+            <div class="subtitle">Block distractions. Boost productivity. Achieve your goals.</div>
+            
+            <div class="features">
+                <div class="feature">
+                    <span class="feature-icon">🎯</span>
+                    <div class="feature-text">Smart Blocking</div>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">⏰</span>
+                    <div class="feature-text">Scheduled Control</div>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">🧠</span>
+                    <div class="feature-text">Challenge Mode</div>
+                </div>
+            </div>
+            
+            <button class="cta-button">Download Site Blocker</button>
+        </div>
+        <div class="logo">
+            <span class="shield-icon">🛡️</span>
+            Site Blocker
+        </div>
+    </div>
+
+    <!-- Ad 2: Smart Blocking -->
+    <div class="ad-container ad2">
+        <div class="left">
+            <h1>BLOCK<br>WHAT MATTERS</h1>
+            <div class="subtitle">Intelligent website and keyword blocking with precision control</div>
+            <button class="cta-button">Get Started Today</button>
+        </div>
+        <div class="right">
+            <div class="mock-interface">
+                <h3 style="margin: 0 0 20px 0; color: #333;">🎯 Block List</h3>
+                <div class="blocked-site">
+                    <div class="site-icon youtube">▶</div>
+                    <div>
+                        <div style="font-weight: 600;">youtube.com</div>
+                        <div style="font-size: 12px; color: #666;">Website access blocked</div>
+                    </div>
+                </div>
+                <div class="blocked-site">
+                    <div class="site-icon facebook">f</div>
+                    <div>
+                        <div style="font-weight: 600;">facebook.com</div>
+                        <div style="font-size: 12px; color: #666;">Website access blocked</div>
+                    </div>
+                </div>
+                <div class="blocked-site">
+                    <div class="site-icon" style="background: #4CAF50;">🔤</div>
+                    <div>
+                        <div style="font-weight: 600;">Keyword: shorts</div>
+                        <div style="font-size: 12px; color: #666;">URLs containing this keyword are blocked</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="logo">
+            <span class="shield-icon">🛡️</span>
+            Site Blocker
+        </div>
+    </div>
+
+    <!-- Ad 3: Schedule Control -->
+    <div class="ad-container ad3">
+        <h1>SCHEDULE YOUR SUCCESS</h1>
+        <div class="subtitle">Set custom blocking schedules for different days and times</div>
+        
+        <div class="schedule-visual">
+            <div class="days-row">
+                <div class="day-circle active">M</div>
+                <div class="day-circle active">T</div>
+                <div class="day-circle active">W</div>
+                <div class="day-circle active">T</div>
+                <div class="day-circle active">F</div>
+                <div class="day-circle">S</div>
+                <div class="day-circle">S</div>
+            </div>
+            <div class="time-display">
+                ⏰ Active: 09:00 - 17:00
+            </div>
+        </div>
+        
+        <button class="cta-button">Start Blocking Smarter</button>
+        
+        <div class="logo">
+            <span class="shield-icon">🛡️</span>
+            Site Blocker
+        </div>
+    </div>
+
+    <!-- Ad 4: In-App Blocking -->
+    <div class="ad-container ad4">
+        <div class="left">
+            <h1>BLOCK FEATURES,<br>NOT APPS</h1>
+            <div class="subtitle">Surgical precision blocking for YouTube, TikTok, Instagram and more</div>
+            <button class="cta-button">Try In-App Blocking</button>
+        </div>
+        <div class="right">
+            <div class="app-grid">
+                <div class="app-card youtube">
+                    <div class="app-icon">▶</div>
+                    <div class="app-name">YouTube</div>
+                </div>
+                <div class="app-card tiktok">
+                    <div class="app-icon">♪</div>
+                    <div class="app-name">TikTok</div>
+                </div>
+                <div class="app-card instagram">
+                    <div class="app-icon">📷</div>
+                    <div class="app-name">Instagram</div>
+                </div>
+                <div class="app-card facebook">
+                    <div class="app-icon">f</div>
+                    <div class="app-name">Facebook</div>
+                </div>
+                <div class="app-card twitter">
+                    <div class="app-icon">𝕏</div>
+                    <div class="app-name">X</div>
+                </div>
+                <div class="app-card snapchat">
+                    <div class="app-icon">👻</div>
+                    <div class="app-name">Snapchat</div>
+                </div>
+            </div>
+        </div>
+        <div class="logo">
+            <span class="shield-icon">🛡️</span>
+            Site Blocker
+        </div>
+    </div>
+
+    <!-- Ad 5: Challenge Mode -->
+    <div class="ad-container ad5">
+        <h1>EARN YOUR ACCESS</h1>
+        <div class="subtitle">Answer trivia questions to unlock blocked sites temporarily</div>
+        
+        <div class="challenge-demo">
+            <div class="quiz-question">
+                <div class="question-text">🧠 Which planet is known as the Red Planet?</div>
+                <div class="answer-options">
+                    <div class="answer-option">A) Venus</div>
+                    <div class="answer-option" style="border-color: #4CAF50; background: #e8f5e8;">B) Mars ✓</div>
+                    <div class="answer-option">C) Jupiter</div>
+                    <div class="answer-option">D) Saturn</div>
+                </div>
+            </div>
+            <div style="color: rgba(255,255,255,0.8); font-size: 18px;">
+                💡 Answer correctly to unlock access for 10 minutes
+            </div>
+        </div>
+        
+        <button class="cta-button">Enable Challenge Mode</button>
+        
+        <div class="logo">
+            <span class="shield-icon">🛡️</span>
+            Site Blocker
+        </div>
+    </div>
+
+    <script>
+        // Add some interactive effects
+        document.querySelectorAll('.app-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'scale(1.05)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'scale(0.9)';
+            });
+        });
+
+        document.querySelectorAll('.answer-option').forEach(option => {
+            option.addEventListener('click', () => {
+                option.style.borderColor = '#4CAF50';
+                option.style.background = '#e8f5e8';
+            });
+        });
+    </script>
+</body>
+</html>
